@@ -1,6 +1,6 @@
 import express from "express";
-import { protectAdmin } from "../middleware/auth.js";
-import { getAllBookings, getAllShows, getDashBoardData, isAdmin } from "../controllers/adminController.js";
+import { protectAdmin } from "../Middleware/Auth.js";
+import { getAllBookings, getAllShows, getDashBoardData, isAdmin } from "../Controllers/AdminController.js";
 
 const adminRouter = express.Router();
 // Check out the dashboard APIs because they are being used in the admin dashboard page

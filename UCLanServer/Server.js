@@ -1,6 +1,6 @@
 import {clerkMiddleware} from '@clerk/express';
 import { serve } from "inngest/express";
-import { functions, inngest } from "./Inngest/Index.js";
+import { inngest, functions } from "./Inngest/Index.js";
 import showRouter from './Routes/ShowRoutes.js';
 import bookingRoutes from './Routes/BookingRoutes.js';
 import adminRouter from './Routes/AdminRoutes.js';
@@ -16,7 +16,7 @@ const port = 3000;
 await connectDB();
 
 //Stripe Webhook Endpoint Route
-app.use('/api/stripe', express.raw({type: 'application/json'}), stripeWebhook)
+// app.use('/api/stripe', express.raw({type: 'application/json'}), stripeWebhook)
 
 // Middleware
 app.use(cors());
