@@ -1,6 +1,6 @@
 import Booking from "../Models/Booking.js";
 import Show from "../Models/Show.js"
-import stripe from "stripe";
+import stripe from 'stripe';
 
 // Checking Seats availability
 const checkingSeatsAvailability =  async (showId, selectedSeats) => {

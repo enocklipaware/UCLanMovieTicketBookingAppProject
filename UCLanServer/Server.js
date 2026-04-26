@@ -9,6 +9,8 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import connectDB from './Config/db.js';
+import { stripeWebhook } from './Controllers/StripeWebhook.js';
+
 
 const app = express();
 const port = 3000;
@@ -16,7 +18,7 @@ const port = 3000;
 await connectDB();
 
 //Stripe Webhook Endpoint Route
-// app.use('/api/stripe', express.raw({type: 'application/json'}), stripeWebhook)
+app.use('/api/stripe', express.raw({type: 'application/json'}), stripeWebhook)
 
 // Middleware
 app.use(cors());
