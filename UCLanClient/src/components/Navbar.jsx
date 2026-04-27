@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { assets } from '../../../../UCLan Movie Ticket App/UCLanClient/src/assets/assets'
+import { assets } from '../../../UCLanClient/src/assets/assets'
 import { useState } from 'react'
 import { MenuIcon, SearchIcon, TicketPlus, XIcon } from 'lucide-react'
 import { useClerk, UserButton, useUser } from '@clerk/clerk-react'

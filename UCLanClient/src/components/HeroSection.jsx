@@ -1,4 +1,4 @@
-import { assets } from '../../../../UCLan Movie Ticket App/UCLanClient/src/assets/assets'
+import { assets } from '../../../UCLanClient/src/assets/assets'
 import { ArrowRight, CalendarIcon, ClockIcon } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 

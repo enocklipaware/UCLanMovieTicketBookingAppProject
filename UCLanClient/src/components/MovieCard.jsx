@@ -1,5 +1,5 @@
 import React from 'react'
-import timeFormat from '../../../../UCLan Movie Ticket App/UCLanClient/src/lib/timeFormat'
+import timeFormat from '../../../UCLanClient/src/lib/timeFormat'
 import { StarIcon, Ticket } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useAppContext } from '../../../UCLanClient/src/context/AppContext'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { assets } from '../../../../UCLan Movie Ticket App/UCLanClient/src/assets/assets'
+import { assets } from '../../../UCLanClient/src/assets/assets'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // import { Github, Twitter, Mail, Facebook } from 'lucide-react';
