@@ -5,9 +5,8 @@ import Movie from "../Models/Movie.js";
 // API Controllers function to get User Bookings
 export const getUserBookings = async (req, res) => {
     try {
-        const userId = req.auth?.userId;
-        if (!userId) return res.status(401).json({success: false, message: "Unauthenticated"});
-        const bookings =  await Booking.find({user: userId}).populate({
+        const user = req.auth().userId;
+        const bookings =  await Booking.find({user}).populate({
             path: "show",
             populate: {path:"movie"}
         }).sort({createdAt: -1})
@@ -22,8 +21,7 @@ export const getUserBookings = async (req, res) => {
 export const updateFavorite = async (req, res) => {
     try {
         const {movieId} = req.body
-        const userId = req.auth?.userId;
-        if (!userId) return res.status(401).json({success: false, message: "Unauthenticated"});
+        const userId = req.auth().userId;
         const user = await clerkClient.users.getUser(userId)
         if(!user.privateMetadata.favorites) {
             user.privateMetadata.favorites = []
@@ -45,10 +43,8 @@ export const updateFavorite = async (req, res) => {
 
 export const getFavorites = async (req, res) => {
     try {
-        const userId = req.auth?.userId;
-        if (!userId) return res.status(401).json({success: false, message: "Unauthenticated"});
-        const user = await clerkClient.users.getUser(userId)
-        const favorites = user.privateMetadata?.favorites || []
+        const user = await clerkClient.users.getUser(req.auth().userId)
+        const favorites = user.privateMetadata.favorites
         // Getting Movies from Databases
         const movies = await Movie.find({_id: {$in: favorites}})
         res.json({success: true, movies})
