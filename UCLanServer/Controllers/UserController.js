@@ -1,11 +1,11 @@
-import { clerkClient } from "@clerk/express";
+import { clerkClient, getAuth } from "@clerk/express";
 import Booking from "../Models/Booking.js";
 import Movie from "../Models/Movie.js";
 
 // API Controllers function to get User Bookings
 export const getUserBookings = async (req, res) => {
     try {
-        const user = req.auth().userId;
+        const user = getAuth(req).userId;
         const bookings =  await Booking.find({user}).populate({
             path: "show",
             populate: {path:"movie"}
@@ -21,7 +21,7 @@ export const getUserBookings = async (req, res) => {
 export const updateFavorite = async (req, res) => {
     try {
         const {movieId} = req.body
-        const userId = req.auth().userId;
+        const userId = getAuth(req).userId;
         const user = await clerkClient.users.getUser(userId)
         if(!user.privateMetadata.favorites) {
             user.privateMetadata.favorites = []
