@@ -1,7 +1,7 @@
 {
   "name": "uclanserver",
   "version": "1.0.0",
-  "main": "Server.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "server": "nodemon server.js",
