@@ -47,7 +47,7 @@ export const createBooking = async (req, res) => {
         await showData.save();
 
         // Stripe Gateways Initialized  -- PAYMENT INTEGRATION
-        const stripeInstace = new stripe(process.env.STRIPE_SECRET_KEY);
+        const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY);
 
         // Creating line items for stripe checkout session
         const line_items =  [
@@ -56,14 +56,13 @@ export const createBooking = async (req, res) => {
                     currency: 'usd',
                     product_data: {
                         name: showData.movie.title,
-                        //images: [showData.movie.poster],
                 },
                 unit_amount: Math.floor(booking.amount * 100)
             }, 
             quantity: 1,
         }]  
 
-        const session = await stripeInstace.checkout.sessions.create({
+        const session = await stripeInstance.checkout.sessions.create({
             success_url: `${origin}/loading/my-bookings`,
             cancel_url: `${origin}/my-bookings`,
             line_items: line_items,
