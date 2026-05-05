@@ -56,9 +56,9 @@ export const createBooking = async (req, res) => {
                 price_data: {
                     currency: 'usd',
                     product_data: {
-                        name: showData.movie.title,
+                        name: showData.movie.title
                 },
-                unit_amount: Math.floor(booking.amount * 100)
+                unit_amount: Math.floor(booking.amount) * 100, // Stripe expects amount in cents
             }, 
             quantity: 1,
         }]  
